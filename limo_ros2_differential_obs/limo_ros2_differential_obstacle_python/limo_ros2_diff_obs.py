@@ -8,10 +8,17 @@ from isaacsim.core.api import World
 import omni.graph.core as og
 
 from isaacsim.core.utils.stage import get_current_stage, add_reference_to_stage
+from isaacsim.core.api.objects import DynamicCuboid
 
 from isaacsim.examples.interactive.base_sample import BaseSample
 
-class LimoROS2Diff(BaseSample):
+class CubeSpec:
+    def __init__(self, name, color, position):
+        self.name = name
+        self.color = np.array(color)
+        self.position = np.array(position)
+
+class LimoROS2DiffObs(BaseSample):
     def __init__(self) -> None:
         super().__init__()
         
@@ -44,6 +51,10 @@ class LimoROS2Diff(BaseSample):
         self._cameraPath = "/World/Limo/depth_link/limo_camera"
         self._lidarPath = "/World/Limo/laser_link/RPLIDAR_S2E/RPLIDAR_S2E"
         self._sensorPrims = ["/World/Limo/depth_link", "/World/Limo/laser_link", "/World/Limo/imu_link"]
+        
+        # cube setup
+        self._width = 0.15
+        
         return
 
     def add_light(self):
@@ -290,6 +301,45 @@ class LimoROS2Diff(BaseSample):
         except Exception as e:
             print(e)
     
+    def add_obstacle(self):
+        obs_specs = [
+            CubeSpec("RedCube_1", [0.7, 0.0, 0.0], [0.76609, 0.51694, 0.1]),
+            CubeSpec("BlueCube_1", [0.0, 0.0, 0.7], [-0.6749, 0.0, 0.1]),
+            CubeSpec("GreenCube_1", [0.0, 0.7, 0.0], [0.2, 0.49612, 0.1]),
+            CubeSpec("RedCube_2", [0.7, 0.0, 0.0], [-0.40531, 0.84673, 0.1]),
+            CubeSpec("BlueCube_2", [0.0, 0.0, 0.7], [1.25963, 0.15581, 0.1]),
+            CubeSpec("GreenCube_2", [0.0, 0.7, 0.0], [1.21551, -0.86162, 0.1]),
+            CubeSpec("RedCube_3", [0.7, 0.0, 0.0], [-0.52328, -0.53648, 0.1]),
+            CubeSpec("GreenCube_3", [0.0, 0.7, 0.0], [-0.74971, -0.41684, 0.1]),
+            CubeSpec("BlueCube_3", [0.0, 0.0, 0.7], [0.0007, -0.83774, 0.1]),
+            CubeSpec("RedCube_4", [0.7, 0.0, 0.0], [0.7189, -0.51325, 0.1]),
+            CubeSpec("GreenCube_4", [0.0, 0.7, 0.0], [0.31817, -0.4963, 0.1]),
+            CubeSpec("BlueCube_4", [0.0, 0.0, 0.7], [0.50956, -0.53134, 0.1]),
+            CubeSpec("GreenCube_5", [0.0, 0.7, 0.0], [-1.02633, 0.36021, 0.1]),
+            CubeSpec("RedCube_5", [0.7, 0.0, 0.0], [-0.60602, 0.42274, 0.1]),
+            CubeSpec("BlueCube_5", [0.0, 0.0, 0.7], [-0.77033, 0.98167, 0.1]),
+            CubeSpec("GreenCube_6", [0.0, 0.7, 0.0], [-1.02633, 1.28037, 0.1]),
+            CubeSpec("GreenCube_7", [0.0, 0.7, 0.0], [0.31532, 1.40771, 0.1]),
+            CubeSpec("RedCube_6", [0.7, 0.0, 0.0], [0.49066, 1.31441, 0.1]),
+            CubeSpec("BlueCube_6", [0.0, 0.0, 0.7], [0.66801, 1.40192, 0.1]),
+            CubeSpec("GreenCube_8", [0.0, 0.7, 0.0], [-0.26329, 1.58919, 0.1]),
+            CubeSpec("RedCube_7", [0.7, 0.0, 0.0], [0.1963, 1.83202, 0.1]),
+            CubeSpec("RedCube_8", [0.7, 0.0, 0.0], [1.25307, 1.13621, 0.1]),
+            CubeSpec("GreenCube_9", [0.0, 0.7, 0.0], [1.30969, 1.40769, 0.1]),
+            CubeSpec("RedCube_9", [0.7, 0.0, 0.0], [1.61672, 0.85947, 0.1]),
+        ]
+        
+        for spec in obs_specs:
+            obj = self._world.scene.add(
+                DynamicCuboid(
+                    prim_path="/World/Obs/{}".format(spec.name),
+                    name=spec.name,
+                    size=self._width,
+                    color=spec.color,
+                    position=spec.position
+                )
+            )
+            
     def setup_scene(self):
         self._world = World.instance()
         self._stage = get_current_stage()
@@ -299,6 +349,7 @@ class LimoROS2Diff(BaseSample):
         self.add_background()
         self.add_robot()
         self.og_setup()
+        self.add_obstacle()
     
         return
 
