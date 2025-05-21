@@ -42,7 +42,7 @@ class LimoROS2Diff(BaseSample):
         self._basePrim= "/World/Limo/base_link"
         self._imuPrim= "/World/Limo/base_link/Imu_Sensor"
         self._cameraPath = "/World/Limo/depth_link/limo_camera"
-        self._lidarPath = "/World/Limo/laser_link/RPLIDAR_S2E/RPLIDAR_S2E"
+        self._lidarPath = "/World/Limo/laser_link/RPLidar_S2e/RPLIDAR_S2E"
         self._sensorPrims = ["/World/Limo/depth_link", "/World/Limo/laser_link", "/World/Limo/imu_link"]
         return
 
