@@ -298,6 +298,25 @@ class LimoROS2DiffObs(BaseSample):
                     ],
                 },
             )
+            
+            og.Controller.edit(
+                {"graph_path": "/ROS2Clock", "evaluator_name": "execution"},
+                {
+                    og.Controller.Keys.CREATE_NODES: [
+                        ("onPlaybackTick", "omni.graph.action.OnPlaybackTick"),
+                        ("readSimulationTime", "isaacsim.core.nodes.IsaacReadSimulationTime"),
+                        ("rosContext", "isaacsim.ros2.bridge.ROS2Context"),
+                        ("publishClock", "isaacsim.ros2.bridge.ROS2PublishClock"),
+                    ],
+                    og.Controller.Keys.SET_VALUES: [
+                    ],
+                    og.Controller.Keys.CONNECT: [
+                        ("onPlaybackTick.outputs:tick", "publishClock.inputs:execIn"),
+                        ("readSimulationTime.outputs:simulationTime", "publishClock.inputs:timeStamp"),
+                        ("rosContext.outputs:context", "publishClock.inputs:context"),
+                    ],
+                },
+            )
         except Exception as e:
             print(e)
     
