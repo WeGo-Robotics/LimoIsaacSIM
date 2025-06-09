@@ -1,0 +1,17 @@
+sim:
+  scan_to_scan_filter_chain:
+    ros__parameters:
+      use_sim_time: true
+      filter1:
+        name: box_filter
+        type: laser_filters/LaserScanBoxFilter
+        params:
+          box_frame: base_link
+          max_x: 0.15
+          max_y: 0.1
+          max_z: 0.1
+          min_x: -0.15
+          min_y: -0.1
+          min_z: -0.1
+
+          invert: false # activate to remove all points outside of the box
