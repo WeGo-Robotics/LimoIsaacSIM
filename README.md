@@ -19,3 +19,14 @@ $ rosdep install --from-paths src --ignore-src -r -y
 $ colcon build
 ```
 
+## JoyStick Application
+
+You can control Limo with Joystick
+
+The joystick which you can use is Xbox Joystick
+
+![joystick](images/joystick.png)
+
+Also you can connect your joystick with cable 
+
+![joystick connection](images/joystick_connection.png)
