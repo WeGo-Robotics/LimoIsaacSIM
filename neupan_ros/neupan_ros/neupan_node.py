@@ -1,7 +1,7 @@
 import sys
 import os
 
-venv_python = "/home/wego/NeuPAN/neupan_venv/bin/python"
+venv_python = "/home/dangmu/NeuPAN/neupan_venv/bin/python"
 
 # 현재 Python 인터프리터가 venv가 아니라면, 재실행
 if sys.executable != venv_python:

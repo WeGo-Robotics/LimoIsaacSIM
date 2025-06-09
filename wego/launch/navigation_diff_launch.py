@@ -40,15 +40,6 @@ def generate_launch_description():
         output='screen',
     )
     
-    # scan filter
-    scan_filter=IncludeLaunchDescription(
-            PathJoinSubstitution([FindPackageShare('wego'), 'launch', 'scan_filter_launch.py']))
-    
-    # joystick
-    joystick_control=IncludeLaunchDescription(
-            PathJoinSubstitution([FindPackageShare('wego'), 'launch', 'joystick_launch.py'])
-        )
-
     # For localization
     localization_launch = IncludeLaunchDescription(
         PathJoinSubstitution([
@@ -84,8 +75,6 @@ def generate_launch_description():
         )
 
     return LaunchDescription([
-        scan_filter,
-        joystick_control,
         nav2_container,
         localization_launch,
         navigation_launch,

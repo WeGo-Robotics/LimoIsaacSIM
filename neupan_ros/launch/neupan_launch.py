@@ -28,15 +28,15 @@ def generate_launch_description():
                 'map_frame': LaunchConfiguration('map_frame'),
                 'base_frame': LaunchConfiguration('base_frame'),
                 'lidar_frame': LaunchConfiguration('lidar_frame'),
-                'scan_range': [0.0, 5.0],                      # 문자열 아님!
-                'scan_angle_range': [-1.92, 1.92],             # 문자열 아님!
+                'scan_range': [0.0, 5.0],                      
+                'scan_angle_range': [-3.14, 3.14],             
                 'marker_size': 0.1,
                 'marker_z': 0.3,
                 'scan_downsample': 6,
                 'dune_checkpoint': LaunchConfiguration('dune_checkpoint'),
             }],
             remappings=[
-                ('/scan', '/scan'),
+                ('/scan', 'sim/scan_filtered'),
                 ('/neupan_cmd_vel', '/cmd_vel'),
             ]
         ),
