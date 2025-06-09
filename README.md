@@ -1,5 +1,6 @@
 # URL
 - The wiki page you can refer here
+
 https://goofy-pleasure-a84.notion.site/Limo-ISAACSIM-Example-Package-1ff09b2ac4bf806886e1e13976cf80f0?source=copy_link
 
 ## Compatible Version
@@ -21,7 +22,7 @@ $ colcon build
 ## View Sensor data 
 You can see the sensor data with RViz
 ```
-# Limo Isaac sim played
+# With Limo Isaac sim played
 $ cd ~/wego_ws
 $ source install/setup.bash
 $ ros2 launch wego display_launch.py
@@ -44,11 +45,28 @@ Also you can connect your joystick with cable
 After Connecting the Joystick you can launch the application
 
 ```
-# Limo Isaac sim played
+# With Limo Isaac sim played
 $ cd ~/wego_ws
 $ source install/setup.bash
 $ ros2 launch wego joystick_launch.py
 ```
 
-You can control limo with joystick with the picture below
+You can control limo with joystick shown the picture below
 ![joystick control](images/joystick_control.png)
+
+The Joystick Application is designed with a structure that allows for easy transitions between autonomous and manual control modes.
+![joystick system](images/joystick_system.png)
+
+## Scan filter
+
+You can filter the lidar data which detect Limo's body itself,
+
+ ```
+# With Limo Isaac sim played
+$ cd ~/wego_ws
+$ source install/setup.bash
+$ ros2 launch wego scan_filter_launch.py
+```
+
+This application will filter out the lidar scan data like this.
+![lidar filter](images/lidar_filter.png)
