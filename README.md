@@ -9,7 +9,7 @@ https://goofy-pleasure-a84.notion.site/Limo-ISAACSIM-Example-Package-1ff09b2ac4b
 ## Basic Setup
 - Setup for workspace and install dependency package.
 
- ```
+```
 $ cd ~/
 $ mkdir -p wego_ws/src
 $ cd ~/wego_ws/src
@@ -18,6 +18,16 @@ $ cd ..
 $ rosdep install --from-paths src --ignore-src -r -y
 $ colcon build
 ```
+## View Sensor data 
+You can see the sensor data with RViz
+```
+# Limo Isaac sim played
+$ cd ~/wego_ws
+$ source install/setup.bash
+$ ros2 launch wego display_launch.py
+```
+![display](images/display.png)
+
 
 ## JoyStick Application
 
@@ -30,3 +40,15 @@ The joystick which you can use is Xbox Joystick
 Also you can connect your joystick with cable 
 
 ![joystick connection](images/joystick_connection.png)
+
+After Connecting the Joystick you can launch the application
+
+```
+# Limo Isaac sim played
+$ cd ~/wego_ws
+$ source install/setup.bash
+$ ros2 launch wego joystick_launch.py
+```
+
+You can control limo with joystick with the picture below
+![joystick control](images/joystick_control.png)
