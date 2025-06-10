@@ -70,3 +70,40 @@ $ ros2 launch wego scan_filter_launch.py
 
 This application will filter out the lidar scan data like this.
 ![lidar filter](images/lidar_filter.png)
+
+## Navigation Application
+
+You can test ROS2 Navigation With Limo Isaac Sim
+ ```
+# With Limo Isaac sim played
+$ cd ~/wego_ws
+$ source install/setup.bash
+
+# For the first terminal(laser filter, joystick bridge)
+$ ros2 launch wego preset_launch.py
+
+# Second terminal launch navigation
+$ ros2 launch wego navigation_diff_launch.py
+
+# Third terminal execute navigation example code
+$ ros2 run wego patrol_limo_navigation
+```
+
+Limo will patrol these points
+![limo navigatin](images/navigation.png)
+
+
+## E2E Navigaton NeuPAN
+
+This project is based on [NeuPAN](https://github.com/hanruihua/NeuPAN) by Han Ruihua.
+The original implementation is licensed under the MIT License.
+
+We extended it to support ROS2 and NVIDIA Isaac Sim environments for internal use and public demonstration.
+
+Copyright (c) [Original Author], MIT License.
+
+- Website https://hanruihua.github.io/neupan_project/
+
+- Github https://github.com/hanruihua/NeuPAN
+
+
