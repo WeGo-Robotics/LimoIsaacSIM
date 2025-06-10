@@ -93,17 +93,15 @@ Limo will patrol these points
 ![limo navigatin](images/navigation.png)
 
 
-## E2E Navigaton NeuPAN
+## E2E Navigation: NeuPAN Integration
 
-This project is based on [NeuPAN](https://github.com/hanruihua/NeuPAN) by Han Ruihua.
-The original implementation is licensed under the MIT License.
+This project includes a ROS2 + Isaac Sim integration of [NeuPAN](https://github.com/hanruihua/NeuPAN),  
+an end-to-end neural planner originally developed by Han Ruihua.
 
-We extended it to support ROS2 and NVIDIA Isaac Sim environments for internal use and public demonstration.
+This repository and its modifications are distributed under the terms of the  
+**GNU General Public License v3 (GPLv3)**, in accordance with the original license.
 
-Copyright (c) [Han Ruihua], MIT License.
+For more details, see the [LICENSE](./LICENSE) file.
 
-- Website https://hanruihua.github.io/neupan_project/
-
-- Github https://github.com/hanruihua/NeuPAN
-
-
+- 📄 NeuPAN Website: https://hanruihua.github.io/neupan_project/  
+- 📦 NeuPAN GitHub: https://github.com/hanruihua/NeuPAN
