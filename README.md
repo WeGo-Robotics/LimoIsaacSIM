@@ -100,7 +100,7 @@ The original implementation is licensed under the MIT License.
 
 We extended it to support ROS2 and NVIDIA Isaac Sim environments for internal use and public demonstration.
 
-Copyright (c) [Original Author], MIT License.
+Copyright (c) [Han Ruihua], MIT License.
 
 - Website https://hanruihua.github.io/neupan_project/
 
