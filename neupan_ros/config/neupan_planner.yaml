@@ -1,5 +1,5 @@
 # mpc
-receding: 5
+receding: 10
 step_time: 0.3
 ref_speed: 0.3
 device: 'cpu'
@@ -9,10 +9,10 @@ collision_threshold: 0.01
 # robot
 robot:
   kinematics: 'diff'
-  max_speed: [0.5, 1.5]
-  max_acce: [0.5, 1.5]
+  max_speed: [1.0, 1.5]
+  max_acce: [1.0, 2.5]
   length: 0.322
-  width: 0.22
+  width: 0.215
 
 ipath:
   interval: 0.09
@@ -34,8 +34,8 @@ pan:
 
 # adjust parameters
 adjust:
-  q_s: 0.3
-  p_u: 2.5
+  q_s: 0.63
+  p_u: 1.8
   eta: 10.0
-  d_max: 0.01
-  d_min: 0.005
+  d_max: 0.03
+  d_min: 0.01
